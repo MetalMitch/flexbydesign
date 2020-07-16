@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+<head>
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -23,17 +24,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../css/main.min.css" />
     <title>FlexByDesign | Contact</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="../css/main.min.css">
+</head>
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRFFMGX" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="nav" id="mainNav">
-      <a href="../" class="logo nohov" ><img src="../img/logo/full-land-color.png" alt="Flex By Design Logo" /></a>
+    <a href="../" class="logo nohov" ><img src="../img/logo/full-land-color.png" alt="Flex By Design Logo" /></a>
       <!-- <a href="#locations">Locations<img src="img/icons/flexibility.svg" class="flexicon"></img></a> -->
       <a href="http://flexbydesign.blog" target="_blank">Blog <!--<i class="fab fa-wordpress-simple"></i>--></a>
       <a href="/contact/">Get Started <!--<img src="img/icons/connection.svg" class="flexicon"></img>--></a>
@@ -42,19 +43,31 @@
       <a href="javascript:void(0);" class="icon nohov scroll" onclick="navBar()"><i class="fas fa-bars"></i></a>
     </div>
     <div class="content">
-      <section id="careers">
-        <div id="image">
-          <img src="../img/images/5.jpg" alt="Men Working in an Office Space" />
-        </div>
-        <div id="text">
-          <h2>Thank you for attempting contacting us</h2>
-          <p>
-            Unfortunately we are experiencing technical issues, and our administrator has been notified of this error.
-          </p>
-          <p>Thank you for your patience in this matter.</p>
-          <div>
-        </div>
-      </section>
+        <form action="sendmail.php" method="post" class="form">
+            <label for="firstname">First Name</label><br>
+            <input type="text" id="firstname" name="firstname" required="required"><br>
+            <label for="lastname">Last Name</label><br>
+            <input type="text" id="lastname" name="lastname" required="required"><br>
+            <label for="email">Email Address</label><br>
+            <input type="text" id="email" name="email" required="required"><br>
+            <label for="more">More About You</label><br>
+            <textarea name="more" id="more" required="required"></textarea><br>
+            <label for="how">How did you hear about flex By Design?</label><br>
+            <select id="how" name="how[]">
+                <option selected disabled value="">-Please Select-</option>
+                <option value="Contacted by Team">Contacted by Team</option>
+                <option value="Word of Mouth">Word of Mouth</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Twitter">Twitter</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Google">Google</option>
+            </select><br>
+            <label for="genuine">Are You Human?</label><br>
+            <p class="label-genuine">Please answer the following question to proceed.</p><br>
+            5 + 5 = <input type="text" id="genuine" name="genuine" class="input-genuine" required="required" style="width: 20%;"><br><br>
+            <button type="submit" class="btn" name="action">Subscribe</button>
+        </form>
     </div>
     <footer>
       <div class="footer-nav">
