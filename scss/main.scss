@@ -1,0 +1,714 @@
+/*-----------------------------------------------------Variables Start--------------------------------------------------------*/
+
+$blue: #3399cc;
+$red: #ff3333;
+$text: #330033;
+$yellow: #ffcc33;
+$purple: #663399;
+$purplehov: #5f16a8;
+
+$h1: 8vw;
+$h2: 6vw;
+$h3: 5vw;
+$h4: 3.5vw;
+$p: 2vw;
+
+$h1s: 3vw;
+$h2s: 2vw;
+$h3s: 1.5vw;
+$h4s: 1.2vw;
+$ps: 0.9vw;
+
+/*------------------------------------------------------Variables End---------------------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+
+/*-----------------------------------------------Normalise Text Sizes Start---------------------------------------------------*/
+
+h2 {
+  font-size: $h2;
+
+  @media screen and (min-width: 600px) {
+    font-size: $h2s;
+  }
+}
+
+h3 {
+  font-size: $h3;
+
+  @media screen and (min-width: 600px) {
+    font-size: $h3s;
+  }
+}
+
+h4 {
+  font-size: $h4;
+
+  @media screen and (min-width: 600px) {
+    font-size: $h4s;
+  }
+}
+
+a {
+  font-size: $h4;
+
+  @media screen and (min-width: 600px) {
+    font-size: $h4s;
+  }
+}
+
+/*------------------------------------------------Normalise Text Sizes End----------------------------------------------------*/
+
+body {
+  color: $text;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+/*---Keeping content in safe areas for notched devices---*/
+.content {
+  padding: calc(max(5rem, env(safe-area-inset-top))) env(safe-area-inset-right)
+    calc(max(8px, env(safe-area-inset-bottom))) env(safe-area-inset-left); //5rem top padding to clear the nav  |  Using calc() as scss doesnt support max(env()) as of 20/01/2020
+  @media screen and (min-width: 600px) {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+/*-----------------------------------------------Call To Action Button Start--------------------------------------------------*/
+.btn {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, $purple),
+    color-stop(1, $purplehov)
+  );
+  background: -moz-linear-gradient(top, $purple 5%, $purplehov 100%);
+  background: -webkit-linear-gradient(top, $purple 5%, $purplehov 100%);
+  background: -o-linear-gradient(top, $purple 5%, $purplehov 100%);
+  background: -ms-linear-gradient(top, $purple 5%, $purplehov 100%);
+  background: linear-gradient(to bottom, $purple 5%, $purplehov 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#663399', endColorstr='#5f16a8',GradientType=0);
+  background-color: $purple;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid $text;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: $h3;
+  padding: 13px 44px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px $text;
+
+  @media screen and (min-width: 600px) {
+    font-size: $h3s;
+  }
+
+  &:hover {
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0.05, $purplehov),
+      color-stop(1, $purple)
+    );
+    background: -moz-linear-gradient(top, $purplehov 5%, $purple 100%);
+    background: -webkit-linear-gradient(top, $purplehov 5%, $purple 100%);
+    background: -o-linear-gradient(top, $purplehov 5%, $purple 100%);
+    background: -ms-linear-gradient(top, $purplehov 5%, $purple 100%);
+    background: linear-gradient(to bottom, $purplehov 5%, $purple 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5f16a8', endColorstr='#663399',GradientType=0);
+    background-color: $purplehov;
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
+
+/*------------------------------------------------Call To Action Button End---------------------------------------------------*/
+
+/*------------------------------------------------------NavBar Start----------------------------------------------------------*/
+
+.nav {
+  overflow: hidden;
+  width: 100vw;
+  margin-top: 0;
+  background-color: white;
+  -webkit-box-shadow: 0 4px 2px -2px rgba(71, 70, 70, 0.2);
+  box-shadow: 0 4px 2px -2px rgba(71, 70, 70, 0.2);
+  padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
+  z-index: 99;
+  line-height: 82px;
+
+  a {
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    color: $text;
+    bottom: 0;
+    padding: 0 16px;
+    font-size: $p;
+    @media screen and (min-width: 600px) {
+      font-size: $ps;
+    }
+
+    .flexicon {
+      height: 0.5rem;
+      width: auto;
+    }
+
+    .flexiconlrg {
+      height: 0.75rem;
+      width: auto;
+    }
+
+    &:hover:not(.nohov) {
+      color: $blue;
+      transition: 0.2s;
+    }
+  }
+
+  .logo img {
+    vertical-align: middle;
+    height: auto;
+    width: 120px;
+  }
+  .icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav a {
+    &:not(:first-child) {
+      //Remove all links except the Logo
+      display: none;
+    }
+    font-size: 7vw; //Hamburger menu sizing
+
+    &.icon {
+      float: right;
+      display: block;
+    }
+  }
+  .nav.responsive {
+    position: relative;
+
+    a {
+      &.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .nav a {
+    &:not(:first-child) {
+      float: right;
+    }
+  }
+}
+
+/*-------------------------------------------------------NavBar End-----------------------------------------------------------*/
+
+/*-------------------------------------------------------Footer Start---------------------------------------------------------*/
+
+footer {
+  background-color: $purple;
+  color: whitesmoke;
+  font-size: $p;
+  display: grid;
+  padding: 1rem;
+  padding-bottom: calc(
+    max(env(1rem, safe-area-inset-bottom))
+  ); //Using calc() as scss doesnt support max(env()) as of 20/01/2020
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto;
+
+  @media screen and (min-width: 900px) {
+    padding: 10vh 20vw 5vh 20vw;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto auto;
+
+    .footer-nav {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      line-height: 1;
+    }
+    .footer-links {
+      grid-column-start: 3;
+      grid-column-end: 4;
+    }
+    .footer-bottom {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .footer-links {
+      margin-top: 2rem;
+    }
+  }
+
+  .footer-nav {
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+    line-height: 2;
+
+    div {
+      & :hover {
+        color: $text;
+        transition: 0.2s;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        font-size: $p;
+
+        @media screen and (min-width: 900px) {
+          font-size: $ps;
+        }
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      div {
+        justify-self: center;
+      }
+    }
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+
+    div {
+      a {
+        text-decoration: none;
+        color: white;
+
+        & :hover {
+          color: $text;
+          transition: 0.2s;
+        }
+      }
+    }
+
+    i {
+      font-size: 3rem;
+    }
+
+    .social {
+      justify-self: center;
+    }
+
+    #findus {
+      font-size: $p;
+      margin-top: 1rem;
+      grid-column-start: 1;
+      grid-column-end: 5;
+      justify-self: center;
+
+      @media screen and (min-width: 900px) {
+        font-size: $ps;
+      }
+    }
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    img {
+      height: 50px;
+      width: auto;
+    }
+
+    div {
+      align-self: flex-end;
+      font-size: $p;
+
+      @media screen and (min-width: 900px) {
+        font-size: $ps;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      justify-content: center;
+    }
+  }
+}
+/*--------------------------------------------------------Footer End----------------------------------------------------------*/
+
+/*----------------------------------------------------Homepage Start----------------------------------------------------------*/
+
+/*-----------------------------------------Landing Section--------------------------------------------*/
+
+#info {
+  #landing {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+
+    #text {
+      h4 {
+        margin: 0 auto 1rem auto;
+        width: 60vw;
+      }
+
+      h6 {
+        margin-bottom: 0;
+        img {
+          height: 2rem;
+          width: auto;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        margin-bottom: 10vh;
+
+        h3 {
+          margin-top: 0;
+        }
+      }
+    }
+
+    #image {
+      img {
+        max-width: 80vw;
+        max-height: 100%;
+        margin: 0;
+        border-radius: 75px;
+      }
+    }
+
+    h2 {
+      font-size: 9vw; //Main landing paragraph
+      text-align: left;
+      width: 50vw;
+      margin: auto;
+    }
+
+    a {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media screen and (min-width: 900px) {
+      flex-direction: row;
+      text-align: left;
+      #text {
+        height: 100vh;
+        padding-top: 10vh;
+
+        h2 {
+          width: 22vw;
+          margin: 0;
+          font-size: $h2s;
+        }
+
+        h4 {
+          width: 20vw;
+          margin: 0;
+        }
+      }
+
+      #image {
+        img {
+          max-width: 50vw;
+        }
+      }
+    }
+  }
+
+  #howwork {
+    text-align: center;
+  }
+}
+
+/*-------------------------------------------Landing End----------------------------------------------*/
+
+/*------------------------------------------Cards Start-----------------------------------------------*/
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1012px) {
+    justify-content: space-around;
+  }
+}
+
+.flip-card {
+  margin: 20px 0 0 20px;
+  font-size: 12px;
+  background-color: transparent;
+  width: 250px;
+  height: 325px;
+  perspective: 1000px; //3d effect
+
+  @media screen and (min-width: 600px) {
+    font-size: 12px;
+  }
+
+  .flip-card-inner {
+    //needed to position the front and back properly
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    .flip-card-front {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      border: #b9a2d0 2px solid;
+      border-radius: 50px;
+      -moz-box-shadow: 5px 5px 5px 6px #ccc;
+      -webkit-box-shadow: 5px 5px 5px 6px #ccc;
+      box-shadow: 5px 5px 5px 6px #ccc;
+
+      .para {
+        padding: 1rem;
+      }
+
+      .item-image {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        img {
+          height: 130px;
+        }
+      }
+    }
+    .flip-card-back {
+      display: flex;
+      flex-direction: column;
+      border: #b9a2d0 2px solid;
+      border-radius: 50px;
+      -moz-box-shadow: 5px 5px 5px 6px #ccc;
+      -webkit-box-shadow: 5px 5px 5px 6px #ccc;
+      box-shadow: 5px 5px 5px 6px #ccc;
+      justify-content: center;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+
+      .para {
+        padding: 1rem;
+      }
+
+      ul {
+        li {
+          margin: 0.5rem 0;
+        }
+      }
+    }
+  }
+}
+
+/* Horizontal flip box container */
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position front and back */
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/*--------------------------------------------Cards End------------------------------------------------*/
+
+/*--------------------------------------------Why Start------------------------------------------------*/
+#why {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  #image {
+    img {
+      width: 100%;
+      height: auto;
+      @media screen and (min-width: 600px) {
+        width: 40vw;
+      }
+    }
+  }
+
+  #text {
+    text-align: center;
+    @media screen and (min-width: 600px) {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5vw 10vh 5vw;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+}
+
+#divimage {
+  display: none;
+  position: relative;
+  z-index: -1;
+  text-align: center;
+  img {
+    max-width: 90%;
+  }
+}
+
+/*--------------------------–------------------Why End----------------------------------------------–--*/
+
+/*-------------------------------------------------------Homepage End---------------------------------------------------------*/
+
+/*-------------------------------------------------Construction Page Start----------------------------------------------------*/
+
+.contentconst {
+  padding-top: 1rem;
+  z-index: -99;
+}
+
+#const {
+  display: block;
+  height: 75vh;
+  width: 100vw;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("../img/images/4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  #consttext {
+    font-size: $h1;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $text;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    );
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    @media screen and (min-width: 600px) {
+      font-size: $h1s;
+    }
+  }
+}
+
+/*--------------------------------------------------Construction Page End-----------------------------------------------------*/
+
+/*------------------------------------------------------FAQ Page Start--------------------------------------------------------*/
+
+#faqbg {
+  width: 80vw;
+  margin: auto;
+  #faqrow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 600px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+    div {
+      padding: 0 0.5rem 0 0.5rem;
+      flex-basis: 0;
+      flex-grow: 1;
+      div {
+        padding: 0 0.5rem 0 0.5rem;
+        margin: 3rem 0 3rem 0;
+        @media screen and (min-width: 600px) {
+          padding: 0 1.5rem 0 1.5rem;
+          margin: 4rem 0 4rem 0;
+        }
+      }
+    }
+  }
+}
+
+#flexwork {
+  list-style-type: upper-roman;
+}
+
+/*-------------------------------------------------------FAQ Page End---------------------------------------------------------*/
+
+/*-----------------------------------------------------Career Page Start------------------------------------------------------*/
+
+#careers {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  #image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50px;
+      @media screen and (min-width: 600px) {
+        width: 40vw;
+      }
+    }
+  }
+
+  #text {
+    text-align: center;
+    @media screen and (min-width: 600px) {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5vw 10vh 5vw;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+}
+
+/*------------------------------------------------------Career Page End-------------------------------------------------------*/
